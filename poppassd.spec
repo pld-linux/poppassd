@@ -48,12 +48,12 @@ uwierzytelnienia.
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT%{_sysconfdir}/{sysconfig/rc-inetd,pam.d}
+install -d $RPM_BUILD_ROOT/etc/{sysconfig/rc-inetd,pam.d}
 
 %{__make} install DESTDIR=$RPM_BUILD_ROOT
 
-install %{SOURCE1} $RPM_BUILD_ROOT%{_sysconfdir}/sysconfig/rc-inetd/%{name}
-install %{SOURCE2} $RPM_BUILD_ROOT%{_sysconfdir}/pam.d/%{name}
+install %{SOURCE1} $RPM_BUILD_ROOT/etc/sysconfig/rc-inetd/%{name}
+install %{SOURCE2} $RPM_BUILD_ROOT/etc/pam.d/%{name}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -76,5 +76,5 @@ fi
 %defattr(644,root,root,755)
 %doc README
 %attr(755,root,root) %{_sbindir}/%{name}
-%attr(640,root,root) %config(noreplace) %{_sysconfdir}/sysconfig/rc-inetd/poppassd
-%attr(640,root,root) %config(noreplace) %{_sysconfdir}/pam.d/%{name}
+%attr(640,root,root) %config(noreplace) /etc/sysconfig/rc-inetd/poppassd
+%attr(640,root,root) %config(noreplace) /etc/pam.d/%{name}
