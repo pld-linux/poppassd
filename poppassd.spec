@@ -51,7 +51,8 @@ uwierzytelnienia.
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT/etc/{sysconfig/rc-inetd,pam.d}
 
-%{__make} install DESTDIR=$RPM_BUILD_ROOT
+%{__make} install \
+	DESTDIR=$RPM_BUILD_ROOT
 
 install %{SOURCE1} $RPM_BUILD_ROOT/etc/sysconfig/rc-inetd/%{name}
 install %{SOURCE2} $RPM_BUILD_ROOT/etc/pam.d/%{name}
@@ -66,7 +67,8 @@ else
 	echo "Type \"/etc/rc.d/init.d/rc-inetd start\" to start inet server" 1>&2
 fi
 echo "Warning!"
-echo "You have to tune your hosts.allow/deny to deny access from non-localhost!"
+echo "You have to tune your /etc/tcpd/hosts.allow and /etc/tcpd/hosts.deny"
+echo "To deny access from non-localhost put there:"
 echo "poppassd: nobody@localhost: allow"
 echo "poppassd: ALL: deny"
 
