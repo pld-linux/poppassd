@@ -10,6 +10,7 @@ Source0:	http://echelon.pl/pubs/%{name}-%{version}.tar.gz
 Source1:	%{name}.inetd
 Source2:	%{name}.pam
 Patch0:		%{name}-DESTDIR.patch
+Patch1:		%{name}-stdarg.h.patch
 URL:		http://echelon.pl/pubs/poppassd.html
 BuildRequires:	pam-devel
 PreReq:		rc-inetd
@@ -43,6 +44,7 @@ uwierzytelnienia.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
 
 %build
 %{__make} \
