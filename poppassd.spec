@@ -1,12 +1,12 @@
 Summary:	Eudora Poppassd modified to support PAM
 Summary(pl):	Zmodyfikowany Poppasswd Eudory z obs³ug± PAM
 Name:		poppassd
-Version:	1.8.3
-Release:	3
-License:	BSD ?
+Version:	1.8.4
+Release:	1
+License:	BSD
 Group:		Applications/System
 Source0:	http://echelon.pl/pubs/%{name}-%{version}.tar.gz
-# Source0-md5:	7a6873640dd4de84222fcd75f3a26473
+# Source0-md5:	b412a086b639e68ae6fdad0c6dc730b6
 Source1:	%{name}.inetd
 Source2:	%{name}.pam
 Patch0:		%{name}-DESTDIR.patch
@@ -45,7 +45,9 @@ uwierzytelnienia.
 %patch0 -p1
 
 %build
-%{__make}
+%{__make} \
+	CC=%{__cc} \
+	CFLAGS="%{rpmcflags}"
 
 %install
 rm -rf $RPM_BUILD_ROOT
