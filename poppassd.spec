@@ -2,7 +2,7 @@ Summary:	Eudora Poppassd modified to support PAM
 Summary(pl):	Zmodyfikowany Poppasswd Eudory z obs³ug± PAM
 Name:		poppassd
 Version:	1.8.4
-Release:	2
+Release:	3
 License:	BSD
 Group:		Applications/System
 Source0:	http://echelon.pl/pubs/%{name}-%{version}.tar.gz
@@ -15,6 +15,7 @@ URL:		http://echelon.pl/pubs/poppassd.html
 BuildRequires:	pam-devel
 PreReq:		rc-inetd
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
+Obsoletes:	poppassd_pam
 
 %description
 Poppassd-ceti is a Qualcomm password changer daemon with PAM support
