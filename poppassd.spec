@@ -2,11 +2,12 @@ Summary:	Eudora Poppassd modified to support PAM
 Summary(pl):	Zmodyfikowany Poppasswd Eudory z obs³ug± PAM
 Name:		poppassd
 Version:	1.8.3
-Release:	1
+Release:	2
 License:	BSD ?
 Group:		Applications/System
 Source0:	http://echelon.pl/pubs/%{name}-%{version}.tar.gz
 Source1:	%{name}.inetd
+Source2:	%{name}.pam
 Patch0:		%{name}-DESTDIR.patch
 URL:		http://echelon.pl/pubs/poppassd.html
 BuildRequires:	pam-devel
@@ -47,11 +48,12 @@ uwierzytelnienia.
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT%{_sysconfdir}/sysconfig/rc-inetd
+install -d $RPM_BUILD_ROOT%{_sysconfdir}/{sysconfig/rc-inetd,pam.d}
 
 %{__make} install DESTDIR=$RPM_BUILD_ROOT
 
-install %{SOURCE1} $RPM_BUILD_ROOT%{_sysconfdir}/sysconfig/rc-inetd/poppassd
+install %{SOURCE1} $RPM_BUILD_ROOT%{_sysconfdir}/sysconfig/rc-inetd/%{name}
+install %{SOURCE2} $RPM_BUILD_ROOT%{_sysconfdir}/pam.d/%{name}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -75,3 +77,4 @@ fi
 %doc README
 %attr(755,root,root) %{_sbindir}/%{name}
 %attr(640,root,root) %config(noreplace) %{_sysconfdir}/sysconfig/rc-inetd/poppassd
+%attr(640,root,root) %config(noreplace) %{_sysconfdir}/pam.d/%{name}
