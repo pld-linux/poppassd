@@ -1,8 +1,0 @@
-SERVICE_NAME=poppassd
-SOCK_TYPE=stream
-PROTOCOL=tcp
-PORT=106
-FLAGS=nowait
-USER=root
-SERVER=tcpd
-DAEMON=/usr/sbin/poppassd
