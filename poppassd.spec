@@ -6,6 +6,7 @@ Release:	3
 License:	BSD ?
 Group:		Applications/System
 Source0:	http://echelon.pl/pubs/%{name}-%{version}.tar.gz
+# Source0-md5:	7a6873640dd4de84222fcd75f3a26473
 Source1:	%{name}.inetd
 Source2:	%{name}.pam
 Patch0:		%{name}-DESTDIR.patch
