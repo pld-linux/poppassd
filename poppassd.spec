@@ -68,7 +68,7 @@ else
 fi
 echo "Warning!"
 echo "You have to tune your /etc/tcpd/hosts.allow and /etc/tcpd/hosts.deny"
-echo "To deny access from non-localhost put there:"
+echo "to deny access from non-localhost - put there:"
 echo "poppassd: nobody@localhost: allow"
 echo "poppassd: ALL: deny"
 
