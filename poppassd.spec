@@ -13,8 +13,8 @@ Patch0:		%{name}-DESTDIR.patch
 URL:		http://echelon.pl/pubs/poppassd.html
 BuildRequires:	pam-devel
 PreReq:		rc-inetd
-BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 Obsoletes:	poppassd_pam
+BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
 Poppassd-ceti is a Qualcomm password changer daemon with PAM support
@@ -83,5 +83,5 @@ fi
 %defattr(644,root,root,755)
 %doc README
 %attr(755,root,root) %{_sbindir}/%{name}
-%attr(640,root,root) %config(noreplace) /etc/sysconfig/rc-inetd/poppassd
-%attr(640,root,root) %config(noreplace) /etc/pam.d/%{name}
+%attr(640,root,root) %config(noreplace) %verify(not md5 mtime size) /etc/sysconfig/rc-inetd/poppassd
+%attr(640,root,root) %config(noreplace) %verify(not md5 mtime size) /etc/pam.d/%{name}
