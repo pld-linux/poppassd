@@ -5,12 +5,12 @@ Version:	1.8.5
 Release:	1
 License:	BSD
 Group:		Applications/System
-Source0:	http://echelon.pl/pubs/%{name}-%{version}.tar.gz
+Source0:	http://bolanda.net/f/%{name}-%{version}.tar.gz
 # Source0-md5:	502caa0c9e39d769040c7295d55a53d6
 Source1:	%{name}.inetd
 Source2:	%{name}.pam
 Patch0:		%{name}-DESTDIR.patch
-URL:		http://echelon.pl/pubs/poppassd.html
+URL:		http://bolanda.net/f/poppassd.html
 BuildRequires:	pam-devel
 PreReq:		rc-inetd
 Obsoletes:	poppassd_pam
