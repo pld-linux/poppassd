@@ -12,7 +12,7 @@ Source2:	%{name}.pam
 Patch0:		%{name}-DESTDIR.patch
 URL:		http://bolanda.net/f/poppassd.html
 BuildRequires:	pam-devel
-PreReq:		rc-inetd
+Requires:	rc-inetd
 Obsoletes:	poppassd_pam
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
