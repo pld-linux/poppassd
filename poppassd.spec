@@ -1,18 +1,21 @@
 Summary:	Eudora Poppassd modified to support PAM
 Summary(pl):	Zmodyfikowany Poppasswd Eudory z obs³ug± PAM
 Name:		poppassd
-Version:	1.8.4
-Release:	2
+Version:	1.8.5
+Release:	1
 License:	BSD
 Group:		Applications/System
+#Source0Download: http://echelon.pl/pubs/poppassd.html
 Source0:	http://echelon.pl/pubs/%{name}-%{version}.tar.gz
-# Source0-md5:	b412a086b639e68ae6fdad0c6dc730b6
+# Source0-md5:	502caa0c9e39d769040c7295d55a53d6
 Source1:	%{name}.inetd
 Source2:	%{name}.pam
 Patch0:		%{name}-DESTDIR.patch
 URL:		http://echelon.pl/pubs/poppassd.html
 BuildRequires:	pam-devel
-PreReq:		rc-inetd
+BuildRequires:	rpmbuild(macros) >= 1.268
+Requires:	rc-inetd
+Obsoletes:	poppassd_pam
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -46,7 +49,7 @@ uwierzytelnienia.
 
 %build
 %{__make} \
-	CC=%{__cc} \
+	CC="%{__cc}" \
 	CFLAGS="%{rpmcflags}"
 
 %install
@@ -63,25 +66,20 @@ install %{SOURCE2} $RPM_BUILD_ROOT/etc/pam.d/%{name}
 rm -rf $RPM_BUILD_ROOT
 
 %post
-if [ -f /var/lock/subsys/rc-inetd ]; then
-	/etc/rc.d/init.d/rc-inetd reload 1>&2
-else
-	echo "Type \"/etc/rc.d/init.d/rc-inetd start\" to start inet server" 1>&2
-fi
-echo "Warning!"
+%service -q rc-inetd reload
 echo "You have to tune your /etc/tcpd/hosts.allow and /etc/tcpd/hosts.deny"
 echo "to deny access from non-localhost - put there:"
-echo "poppassd: nobody@localhost: allow"
+echo "poppassd: http@localhost: allow"
 echo "poppassd: ALL: deny"
 
 %postun
-if [ -f /var/lock/subsys/rc-inetd ]; then
-	/etc/rc.d/init.d/rc-inetd reload 1>&2
+if [ "$1" = 0 ]; then
+	%service -q rc-inetd reload
 fi
 
 %files
 %defattr(644,root,root,755)
 %doc README
 %attr(755,root,root) %{_sbindir}/%{name}
-%attr(640,root,root) %config(noreplace) /etc/sysconfig/rc-inetd/poppassd
-%attr(640,root,root) %config(noreplace) /etc/pam.d/%{name}
+%attr(640,root,root) %config(noreplace) %verify(not md5 mtime size) /etc/sysconfig/rc-inetd/poppassd
+%attr(640,root,root) %config(noreplace) %verify(not md5 mtime size) /etc/pam.d/%{name}
