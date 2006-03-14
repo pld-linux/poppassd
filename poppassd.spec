@@ -13,6 +13,7 @@ Source2:	%{name}.pam
 Patch0:		%{name}-DESTDIR.patch
 URL:		http://echelon.pl/pubs/poppassd.html
 BuildRequires:	pam-devel
+BuildRequires:	rpmbuild(macros) >= 1.268
 Requires:	rc-inetd
 Obsoletes:	poppassd_pam
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -65,19 +66,15 @@ install %{SOURCE2} $RPM_BUILD_ROOT/etc/pam.d/%{name}
 rm -rf $RPM_BUILD_ROOT
 
 %post
-if [ -f /var/lock/subsys/rc-inetd ]; then
-	/etc/rc.d/init.d/rc-inetd reload 1>&2
-else
-	echo "Type \"/etc/rc.d/init.d/rc-inetd start\" to start inet server" 1>&2
-fi
+%service -q rc-inetd reload
 echo "You have to tune your /etc/tcpd/hosts.allow and /etc/tcpd/hosts.deny"
 echo "to deny access from non-localhost - put there:"
 echo "poppassd: http@localhost: allow"
 echo "poppassd: ALL: deny"
 
 %postun
-if [ -f /var/lock/subsys/rc-inetd ]; then
-	/etc/rc.d/init.d/rc-inetd reload 1>&2
+if [ "$1" = 0 ]; then
+	%service -q rc-inetd reload
 fi
 
 %files
