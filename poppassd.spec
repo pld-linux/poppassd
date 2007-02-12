@@ -1,5 +1,5 @@
 Summary:	Eudora Poppassd modified to support PAM
-Summary(pl):	Zmodyfikowany Poppasswd Eudory z obs³ug± PAM
+Summary(pl.UTF-8):   Zmodyfikowany Poppasswd Eudory z obsÅ‚ugÄ… PAM
 Name:		poppassd
 Version:	1.8.5
 Release:	1
@@ -30,17 +30,17 @@ version uses PAM, which means you can do anything PAM can. Currently,
 there are PAM modules for almost all known authentication methods
 available.
 
-%description -l pl
-Poppassd-ceti to pochodz±cy z Qualcomm demon zmieniaj±cy has³a z
-dodan± obs³ug± PAM i kilkoma innymi rozszerzeniami. Program ten ma
-udostêpniæ bezpieczny sposób zmiany hase³ poprzez WWW. Szczególnie
-unika siê metod, w których programy SUID wywo³uje siê bezpo¶rednio z
-serwera WWW. Poppassd ¶ci¶le oddziela interfejs WWW od w³a¶ciwego
-manipulowania na has³ach. Program nie zawiera znanych b³êdów
-zwi±zanych z bezpieczeñstwem, które mog³yby zostaæ zg³oszone od czasu
-udostêpnienia programu kilka lat temu. Ta wersja u¿ywa PAM, co
-oznacza, ¿e u¿ywaj±c jej mo¿na zrobiæ wszystko, co mo¿e PAM. Aktualnie
-s± dostêpne modu³y PAM do prawie wszystkich znanych metod
+%description -l pl.UTF-8
+Poppassd-ceti to pochodzÄ…cy z Qualcomm demon zmieniajÄ…cy hasÅ‚a z
+dodanÄ… obsÅ‚ugÄ… PAM i kilkoma innymi rozszerzeniami. Program ten ma
+udostÄ™pniÄ‡ bezpieczny sposÃ³b zmiany haseÅ‚ poprzez WWW. SzczegÃ³lnie
+unika siÄ™ metod, w ktÃ³rych programy SUID wywoÅ‚uje siÄ™ bezpoÅ›rednio z
+serwera WWW. Poppassd Å›ciÅ›le oddziela interfejs WWW od wÅ‚aÅ›ciwego
+manipulowania na hasÅ‚ach. Program nie zawiera znanych bÅ‚Ä™dÃ³w
+zwiÄ…zanych z bezpieczeÅ„stwem, ktÃ³re mogÅ‚yby zostaÄ‡ zgÅ‚oszone od czasu
+udostÄ™pnienia programu kilka lat temu. Ta wersja uÅ¼ywa PAM, co
+oznacza, Å¼e uÅ¼ywajÄ…c jej moÅ¼na zrobiÄ‡ wszystko, co moÅ¼e PAM. Aktualnie
+sÄ… dostÄ™pne moduÅ‚y PAM do prawie wszystkich znanych metod
 uwierzytelnienia.
 
 %prep
