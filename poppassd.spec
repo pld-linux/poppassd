@@ -2,7 +2,7 @@ Summary:	Eudora Poppassd modified to support PAM
 Summary(pl.UTF-8):	Zmodyfikowany Poppasswd Eudory z obsługą PAM
 Name:		poppassd
 Version:	1.8.5
-Release:	1
+Release:	2
 License:	BSD
 Group:		Applications/System
 #Source0Download: http://echelon.pl/pubs/poppassd.html
